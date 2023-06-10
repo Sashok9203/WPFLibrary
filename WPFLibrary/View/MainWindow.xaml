@@ -27,7 +27,7 @@
         </Grid.RowDefinitions>
         <TextBlock Text="Details" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30" FontWeight="DemiBold"/>
         <TextBlock Text="Library" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30" FontWeight="DemiBold"/>
-        <GridSplitter Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FF76777B"/>
+        <GridSplitter Grid.Column="1" Grid.Row="1"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
         <ListBox Name ="bookList"  Margin="0,0,5,15" Padding="10" SelectedIndex="{Binding SelectedIndex,Mode=TwoWay}" SelectedItem ="{Binding SelectionBook,Mode=OneWayToSource}" ItemsSource="{Binding BoolList}" Grid.Column="2" Grid.Row="1" Grid.RowSpan="2"  >
             <ListBox.ItemContainerStyle>
                 <Style TargetType="ListBoxItem">
@@ -75,7 +75,7 @@
                 <TextBlock Text="{Binding SelectionBook.DateString}" VerticalAlignment="Center" FontSize="22" />
             </WrapPanel>
             <TextBlock  Margin="15,0,0,0" Grid.Row="2" Text="Description : " VerticalAlignment="Center" FontSize="22" FontWeight="DemiBold"/>
-            <ScrollViewer  Grid.Row="3" >
+            <ScrollViewer  VerticalScrollBarVisibility="Auto"  Grid.Row="3" >
                 <TextBlock  TextWrapping="Wrap" Margin="15,0,15,0" Text="{Binding SelectionBook.Description}" FontSize="16" />
             </ScrollViewer>
             
