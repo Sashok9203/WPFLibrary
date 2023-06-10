@@ -33,6 +33,7 @@ namespace WPFLibrary
         {
             if ((sender as Button)?.Content.ToString() == "Next") vModel.SelectedIndex++;
             else vModel.SelectedIndex--;
+            bookList.ScrollIntoView(vModel.SelectionBook);
         }
     }
 }

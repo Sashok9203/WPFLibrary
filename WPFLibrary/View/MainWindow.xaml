@@ -7,9 +7,12 @@
         xmlns:vms="clr-namespace:WPFLibrary.VM"
         d:DataContext="{d:DesignInstance Type = vms:ViewModel}"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" MinWidth="450" MinHeight="350" Height="450" Width="1000">
     <Window.Resources>
-        
+        <Style x:Key="detailTextStile" TargetType ="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -25,30 +28,25 @@
         <TextBlock Text="Details" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30" FontWeight="DemiBold"/>
         <TextBlock Text="Library" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30" FontWeight="DemiBold"/>
         <GridSplitter Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FF76777B"/>
-        <ListBox Margin="0,0,5,15" Padding="10" SelectedIndex="{Binding SelectedIndex,Mode=TwoWay}" SelectedItem ="{Binding SelectionBook,Mode=OneWayToSource}" ItemsSource="{Binding BoolList}" Grid.Column="2" Grid.Row="1" Grid.RowSpan="2" Background="#FF355BF3" >
+        <ListBox Name ="bookList"  Margin="0,0,5,15" Padding="10" SelectedIndex="{Binding SelectedIndex,Mode=TwoWay}" SelectedItem ="{Binding SelectionBook,Mode=OneWayToSource}" ItemsSource="{Binding BoolList}" Grid.Column="2" Grid.Row="1" Grid.RowSpan="2"  >
             <ListBox.ItemContainerStyle>
                 <Style TargetType="ListBoxItem">
                     <Setter Property="HorizontalContentAlignment" Value="Stretch" />
                 </Style>
             </ListBox.ItemContainerStyle>
-            <ListBox.Resources>
-                <Style x:Key="detailTextStile" TargetType ="TextBlock">
-                    <Setter Property="VerticalAlignment" Value="Center"/>
-                    <Setter Property="FontSize" Value="18"/>
-                </Style>
-            </ListBox.Resources>
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <DockPanel  Height="50" LastChildFill="False">
-                        <Rectangle DockPanel.Dock="Bottom" Height="3" Fill="#FF233FAD"/>
+                        <Rectangle DockPanel.Dock="Bottom" Height="2" Fill="#FF928D8D"/>
                         <StackPanel  Orientation="Horizontal" DockPanel.Dock="Left">
-                            <TextBlock  Style="{StaticResource detailTextStile}"  Margin="0,0,10,0"   Text="{Binding Author}"/>
                             <TextBlock  Style="{StaticResource detailTextStile}" Text="&quot;"/>
                             <TextBlock  Style="{StaticResource detailTextStile}" Text="{Binding Title}"/>
                             <TextBlock  Style="{StaticResource detailTextStile}" Text="&quot;"/>
+                            <TextBlock  Style="{StaticResource detailTextStile}" Text="  by  "/>
+                            <TextBlock  Style="{StaticResource detailTextStile}"  Margin="0,0,10,0"   Text="{Binding Author}"/>
+                            
                         </StackPanel>
                         <TextBlock Margin="0,0,20,0" VerticalAlignment="Center" DockPanel.Dock="Right"  FontSize="18" Text="{Binding Date.Year}"/>
-                       
                     </DockPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
